@@ -1,20 +1,21 @@
+
 namespace PlayingCards{
     public class Card : Group{
 
         private readonly Suits suit;
-        private readonly Names name;
+        private readonly Ranks name;
         private readonly Colors color;
-        private readonly byte value = 0;
+        private readonly byte rank = 0;
         private readonly string unicodeSuit = "";
         public Suits Suit {get{return suit;}}
-        public Names Name {get{return name;}}
+        public Ranks Name {get{return name;}}
         public Colors Color {get{return color;}}
-        public byte Value {get{return value;}}
+        public byte Rank {get{return rank;}}
         
-        public Card(Suits suit, Names name, bool isFaceUp = false, bool isUnicode = false){
+        public Card(Suits suit, Ranks name, bool isFaceUp = false, bool isUnicode = false){
             this.suit = suit;
             this.name = name;
-            value = (byte)this.name;
+            rank = (byte)this.name;
             this.isFaceUp = isFaceUp;
             this.isUnicode = isUnicode;
             switch(suit){

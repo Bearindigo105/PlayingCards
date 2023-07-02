@@ -1,5 +1,6 @@
+
 namespace PlayingCards{
-    public enum Names{
+    public enum Ranks{
         Ace = 1,
         Two,
         Three,

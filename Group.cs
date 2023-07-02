@@ -1,19 +1,22 @@
+
 using System.Text;
 
 namespace PlayingCards{
     public class Group{
-        private protected readonly List<Card> list = new();
+        private protected List<Card> list = new();
         private protected bool isUnicode;
         private protected bool isFaceUp;
-        public List<Card> List => list;
+        public List<Card> List {get => list; set => list = value;}
         public bool IsUnicode { get => isUnicode; set => isUnicode = value; }
         public bool IsFaceUp { get => isFaceUp; set => isFaceUp = value; }
-        public Group(List<Card>? cards = default, bool isFaceUp = false, bool isUnicode = false){
+        public Group(List<Card> cards, bool isFaceUp = false, bool isUnicode = false){
             this.isFaceUp = isFaceUp;
             this.isUnicode = isUnicode;
-            if(cards != null){
-                list = cards;
-            }
+            list = cards;
+        }
+        public Group(bool isFaceUp = false, bool isUnicode = false){
+            this.isFaceUp = isFaceUp;
+            this.isUnicode = isUnicode;
         }
         public override string ToString(){
             StringBuilder sb = new("", list.Capacity * 10);
@@ -42,6 +45,36 @@ namespace PlayingCards{
         private int RandomCompare(Card x, Card y){
             Random rand = new();
             return rand.Next(-26,26);
+        }
+        public void Pull(Group group, int index = 0, int indexTo = 0){
+            Card card = group.List[index];
+            list.Insert(indexTo, card);
+            group.List.RemoveAt(index);
+        }
+        public void PullRange(Group group, int index = 0, int count = 0, int indexTo = 0){
+            List<Card> cards = group.List.GetRange(index, count);
+            list.InsertRange(indexTo, cards);
+            group.List.RemoveRange(index, count);
+        }
+        public void PullRange(Group group, int count = 0, int indexTo = 0){
+            List<Card> cards = group.List.GetRange(0, count);
+            list.InsertRange(indexTo, cards);
+            group.List.RemoveRange(0, count);
+        }
+        public void Push(Group group, int index = 0, int indexTo = 0){
+            Card card = list[index];
+            group.List.Insert(indexTo, card);
+            list.RemoveAt(index);
+        }
+        public void PushRange(Group group, int index = 0, int count = 0, int indexTo = 0){
+            List<Card> cards = group.List.GetRange(index, count);
+            group.List.InsertRange(indexTo, cards);
+            list.RemoveRange(index, count);
+        }
+        public void PushRange(Group group, int count = 0, int indexTo = 0){
+            List<Card> cards = group.List.GetRange(0, count);
+            group.List.InsertRange(indexTo, cards);
+            list.RemoveRange(0, count);
         }
     }
 }
