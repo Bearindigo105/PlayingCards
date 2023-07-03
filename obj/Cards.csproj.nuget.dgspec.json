@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\Cards.csproj": {}
+    "c:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\Cards.csproj": {}
   },
   "projects": {
-    "C:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\Cards.csproj": {
+    "c:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\Cards.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\Cards.csproj",
+        "projectUniqueName": "c:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\Cards.csproj",
         "projectName": "Cards",
-        "projectPath": "C:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\Cards.csproj",
+        "projectPath": "c:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\Cards.csproj",
         "packagesPath": "C:\\Users\\subhash\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\obj\\",
+        "outputPath": "c:\\Users\\subhash\\Documents\\Git\\PC\\PlayingCards\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\subhash\\AppData\\Roaming\\NuGet\\NuGet.Config"

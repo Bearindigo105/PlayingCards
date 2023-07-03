@@ -2,13 +2,24 @@
 
 Console.OutputEncoding = System.Text.Encoding.Unicode;
 
-Deck deck = new(true, false);
+Deck deck = new();
 
-Pile pile = new(true, false);
+Console.Write("How Many Players ? :");
 
-Console.WriteLine(deck);    //Print the contents of the deck           //Shuffle the deck
+List<Group> Players = new();
 
-pile.Pull(deck, 0);
+int numOfPlayers = Console.Read() - 48;
 
-Console.WriteLine(pile);
-Console.WriteLine(deck);
+Console.WriteLine(numOfPlayers);
+
+for(int i = 0; i < numOfPlayers; i++){
+    Players.Add(new Pile());
+}
+
+deck.Shuffle(true);
+deck.Deal(Players, 2);
+
+foreach(Group player in Players){
+    player.FlipAll(true);
+    Console.WriteLine(player);
+}

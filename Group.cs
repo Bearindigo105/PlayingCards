@@ -51,12 +51,12 @@ namespace PlayingCards{
             list.Insert(indexTo, card);
             group.List.RemoveAt(index);
         }
-        public void PullRange(Group group, int index = 0, int count = 0, int indexTo = 0){
+        public void PullRange(Group group, int index, int count, int indexTo = 0){
             List<Card> cards = group.List.GetRange(index, count);
             list.InsertRange(indexTo, cards);
             group.List.RemoveRange(index, count);
         }
-        public void PullRange(Group group, int count = 0, int indexTo = 0){
+        public void PullRange(Group group, int count, int indexTo = 0){
             List<Card> cards = group.List.GetRange(0, count);
             list.InsertRange(indexTo, cards);
             group.List.RemoveRange(0, count);
@@ -66,7 +66,7 @@ namespace PlayingCards{
             group.List.Insert(indexTo, card);
             list.RemoveAt(index);
         }
-        public void PushRange(Group group, int index = 0, int count = 0, int indexTo = 0){
+        public void PushRange(Group group, int index, int count, int indexTo = 0){
             List<Card> cards = group.List.GetRange(index, count);
             group.List.InsertRange(indexTo, cards);
             list.RemoveRange(index, count);
@@ -75,6 +75,21 @@ namespace PlayingCards{
             List<Card> cards = group.List.GetRange(0, count);
             group.List.InsertRange(indexTo, cards);
             list.RemoveRange(0, count);
+        }
+        public void Deal(List<Group> groups, int deal){
+            for(int d = 0; d < deal; d++){
+                foreach(Group group in groups){
+                    Push(group);
+                }
+            }
+        }
+        public void Flip(int index = 0, bool? isFaceUp = null){
+            list[index].IsFaceUp = isFaceUp != null ? isFaceUp == true : !list[index].IsFaceUp;
+        }
+        public void FlipAll(bool? isFaceUp = null){
+            foreach(Card card in list){
+                card.IsFaceUp = isFaceUp != null ? isFaceUp == true : !card.IsFaceUp;
+            }
         }
     }
 }
