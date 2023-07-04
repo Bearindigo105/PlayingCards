@@ -28,9 +28,14 @@ namespace PlayingCards{
         }
         public void Shuffle(bool verbose = false){
             Console.Write(verbose ? "Shuffling... \n\n" : null);
-            list.Sort(RandomCompare);
-            list.Sort(RandomCompare);
-            list.Sort(RandomCompare);
+            Random random = new();
+            
+            int len = list.Count;
+            while(len > 1){
+                len --;
+                int rIndex = random.Next(len +1);
+                (list[len], list[rIndex]) = (list[rIndex], list[len]);
+            }
         }
         public Card Pick(int index = -1){
             Random random = new();
@@ -41,10 +46,6 @@ namespace PlayingCards{
         }
         public Card PickExtreme(bool isTop = true){
             return list[isTop ? 0 : list.Count - 1];
-        }
-        private int RandomCompare(Card x, Card y){
-            Random rand = new();
-            return rand.Next(-26,26);
         }
         public void Pull(Group group, int index = 0, int indexTo = 0){
             Card card = group.List[index];

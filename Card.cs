@@ -1,6 +1,6 @@
 
 namespace PlayingCards{
-    public class Card : Group{
+    public sealed class Card : Group{
 
         private readonly Suits suit;
         private readonly Ranks name;

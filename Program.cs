@@ -1,25 +1,43 @@
-﻿using PlayingCards;
-
-Console.OutputEncoding = System.Text.Encoding.Unicode;
+﻿
+using PlayingCards;
 
 Deck deck = new();
 
-Console.Write("How Many Players ? :");
+List<Group> players = new();
 
-List<Group> Players = new();
+Console.Write("How many players?: ");
 
-int numOfPlayers = Console.Read() - 48;
+deck.Shuffle();
 
-Console.WriteLine(numOfPlayers);
+int playerCount = int.Parse(Console.ReadLine() ?? "1");
 
-for(int i = 0; i < numOfPlayers; i++){
-    Players.Add(new Pile());
+while(Console.KeyAvailable){}
+
+Console.WriteLine(playerCount);
+
+for (int index = 0; index < playerCount; index ++){
+    players.Add(new Group());
 }
 
-deck.Shuffle(true);
-deck.Deal(Players, 2);
+deck.Deal(players, 2);
 
-foreach(Group player in Players){
-    player.FlipAll(true);
+foreach(Group player in players){
+    player.FlipAll();
     Console.WriteLine(player);
+}
+
+foreach(Group player in players){
+    turn(player);
+    
+}
+
+static void turn(Group player){
+    Console.Write("Hit(h) or Fold(f)?: ");
+    string? move = Console.ReadLine();
+    while(!(move == "h" | move == "f")){
+        Console.Write("No. Hit(h) or Fold(f)?: ");
+        move = Console.ReadLine();
+    }
+    while(Console.KeyAvailable){}
+    Console.Write("\n");
 }
