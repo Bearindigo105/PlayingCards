@@ -1,46 +1,41 @@
 
 namespace PlayingCards{
     public sealed class Card : Group{
-
-        private readonly Suits suit;
-        private readonly Ranks name;
-        private readonly Colors color;
-        private readonly byte rank = 0;
-        private readonly string unicodeSuit = "";
-        public Suits Suit {get{return suit;}}
-        public Ranks Name {get{return name;}}
-        public Colors Color {get{return color;}}
-        public byte Rank {get{return rank;}}
+        public Suits Suit { get; }
+        public string? UnicodeSuit { get; }
+        public new Ranks Name { get; }
+        public Colors Color { get; }
+        public byte Rank { get; }
         
         public Card(Suits suit, Ranks name, bool isFaceUp = false, bool isUnicode = false){
-            this.suit = suit;
-            this.name = name;
-            rank = (byte)this.name;
-            this.isFaceUp = isFaceUp;
-            this.isUnicode = isUnicode;
+            Suit = suit;
+            Name = name;
+            Rank = (byte)Name;
+            IsFaceUp = isFaceUp;
+            IsUnicode = isUnicode;
             switch(suit){
                 case Suits.Diamonds:
-                    color = Colors.Red;
-                    unicodeSuit = "♦";
+                    Color = Colors.Red;
+                    UnicodeSuit = "♦";
                 break;
                 case Suits.Hearts:
-                    color = Colors.Red;
-                    unicodeSuit = "♥";
+                    Color = Colors.Red;
+                    UnicodeSuit = "♥";
                 break;
                 case Suits.Clubs :
-                    color = Colors.Black;
-                    unicodeSuit = "♣";
+                    Color = Colors.Black;
+                    UnicodeSuit = "♣";
                 break;
                 case Suits.Spades:
-                    color = Colors.Black;
-                    unicodeSuit = "♠";
+                    Color = Colors.Black;
+                    UnicodeSuit = "♠";
                 break;
             }
         }
         public override string ToString() =>
-            ((isFaceUp ? 2 : 0) | (isUnicode ? 1 : 0)) switch{
-            3 => $"{name} {unicodeSuit}",
-            2 => $"{name} of {suit}",
+            ((IsFaceUp ? 2 : 0) | (IsUnicode ? 1 : 0)) switch{
+            3 => $"{Name} {UnicodeSuit}",
+            2 => $"{Name} of {Suit}",
             1 => "░",
             0 => "hidden",
             _ => ""
